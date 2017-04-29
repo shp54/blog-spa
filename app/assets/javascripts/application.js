@@ -13,3 +13,26 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(() => { //Kickstart the backbone application
+	let ArticlesCollection = Backbone.Collection.extend({
+		url: "/articles"
+	})
+
+	let ArticlesView = Backbone.View.extend({
+		el: "#articles",
+		template: Handlebars.compile($("#article-list-template").text()),
+		initialize(opts){
+			this.listenTo(this.collection, "change", this.render)
+			this.collection.fetch().done(() => { this.render() })
+		},
+		render(){
+			this.$el.html(this.template(this.collection.toJSON()))
+			return this
+		}
+	})
+	
+	//Attach view to DOM
+	let articles = new ArticlesCollection() 
+	let articlesTable = new ArticlesView({ collection: articles })
+})

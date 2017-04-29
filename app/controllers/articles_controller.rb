@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 	end
 	
 	def index
-		@articles = Article.all
+		render :json => Article.all
 	end
 	
 	def show

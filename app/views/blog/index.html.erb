@@ -1,0 +1,21 @@
+<h1>Listing articles</h1>
+
+<div id='articles'></div>
+
+<%= link_to 'New article', new_article_path %>
+<script id="article-list-template" type="text/template">
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+	</tr>	
+	{{#each .}}
+		<tr>
+			<td>{{title}}</td>
+			<td>{{text}}</td>
+			<td><a href="/articles/{{id}}">Show</a></td>
+			<td><a href="/articles/{{id}}/edit">Edit</a></td>
+		</tr>
+	{{/each}}
+</table>
+</script>
