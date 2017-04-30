@@ -9,7 +9,6 @@ let ArticlesView = Backbone.View.extend({
 		"click #new-article": "newArticle"
 	},	
 	initialize(opts){
-		this.listenTo(this.collection, "change", this.render)
 		if(this.collection.length > 0){
 			this.render()
 		} else {

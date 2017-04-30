@@ -37,6 +37,10 @@ let ArticlesFormView = Backbone.View.extend({
 	},
 	submitForm(e){
 		e.preventDefault()
-		console.log("Submitting form!")
+		this.model = this.model || new ArticleModel();
+		this.model.save({
+			title: this.$("#article_title").val(),
+			text: this.$("#article_text").val()
+		})
 	}
 })
