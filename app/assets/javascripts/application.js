@@ -18,6 +18,6 @@
 //= require articles/main-view
 
 $(() => { //Kickstart the backbone application	
-	let articles = (window.articles) ? new ArticlesCollection(window.articles) : new ArticlesCollection() //Bootstrap it from server data	
-	let articlesTable = new ArticlesView({ collection: articles }) 	//Attach view to DOM
+	let articlesCollection = (window.articles) ? new ArticlesCollection(window.articles) : new ArticlesCollection() //Bootstrap it from server data
+	let articlesTable = new ArticlesView({ collection: articlesCollection }) //Attach view to DOM
 })

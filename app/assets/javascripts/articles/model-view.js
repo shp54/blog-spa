@@ -14,7 +14,6 @@ let ArticleModelView = Backbone.View.extend({
 		"click #show-article": "showArticle"
 	},
 	initialize(opts){
-		this.listenTo(this.model, "change", this.render);
 		this.listenTo(this.model, "destroy", this.remove);
 	},
 	render(){

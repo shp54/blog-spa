@@ -23,6 +23,6 @@ class ArticlesController < ApplicationController
 	
 	private
 		def article_params
-			params.permit(:title, :text) #Allow form data to be sent directly
+			params.require(:article).permit(:title, :text) #Allow form data to be sent directly
 		end
 end

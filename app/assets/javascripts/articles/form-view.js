@@ -37,10 +37,11 @@ let ArticlesFormView = Backbone.View.extend({
 	},
 	submitForm(e){
 		e.preventDefault()
-		this.model = this.model || new ArticleModel();
-		this.model.save({
+		this.model = this.model || new ArticleModel() //url is not being generated correctly for new model - because it's not part of the collection?
+		this.model.set({
 			title: this.$("#article_title").val(),
 			text: this.$("#article_text").val()
 		})
+		this.model.save()
 	}
 })

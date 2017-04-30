@@ -3,5 +3,6 @@ let ArticlesCollection = Backbone.Collection.extend({
 })
 
 let ArticleModel = Backbone.Model.extend({ 
-	collection: ArticlesCollection 
+	collection: ArticlesCollection,
+	url: "/articles"
 })

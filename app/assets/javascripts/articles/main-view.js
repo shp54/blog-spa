@@ -9,15 +9,13 @@ let ArticlesView = Backbone.View.extend({
 		"click #new-article": "newArticle"
 	},	
 	initialize(opts){
-		if(this.collection.length > 0){
-			this.render()
-		} else {
-			this.collection.fetch().done(() => { this.render() })
-		}
+		this.render()
+		this.listenTo(this.collection, "change", this.render)
 		this.listenTo(Backbone, "showArticleForm", this.createArticleForm)
 		this.listenTo(Backbone, "showArticle", this.showArticle)
 	},
 	render(){
+		this.$("tbody").html("")
 		this.collection.each((model) => {	
 			this.$("table").append(new ArticleModelView({ model }).render().$el)
 		})
