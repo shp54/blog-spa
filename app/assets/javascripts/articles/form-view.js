@@ -37,11 +37,14 @@ let ArticlesFormView = Backbone.View.extend({
 	},
 	submitForm(e){
 		e.preventDefault()
-		this.model = this.model || new ArticleModel() //url is not being generated correctly for new model - because it's not part of the collection?
-		this.model.set({
-			title: this.$("#article_title").val(),
-			text: this.$("#article_text").val()
-		})
-		this.model.save().done(() => Backbone.trigger("addItem"))
+		let data = {
+				title: this.$("#article_title").val(),
+				text: this.$("#article_text").val()
+			}
+		if(this.model){ //Edit model if it exists 
+			this.model.save(data)
+		} else { //Or add it to the collection
+			Backbone.trigger("addNewArticle", data)
+		}
 	}
 })

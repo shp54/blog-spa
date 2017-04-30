@@ -13,7 +13,7 @@ let ArticlesView = Backbone.View.extend({
 		this.listenTo(this.collection, "change", this.render)
 		this.listenTo(Backbone, "showArticleForm", this.createArticleForm)
 		this.listenTo(Backbone, "showArticle", this.showArticle)
-		this.listenTo(Backbone, "addItem", this.collection.fetch)
+		this.listenTo(Backbone, "addNewArticle", this.addNewArticle)
 	},
 	render(){
 		this.$("tbody").html("")
@@ -33,5 +33,8 @@ let ArticlesView = Backbone.View.extend({
 	showArticle(model){
 		this.$("#article-form").html("")
 		this.$("#article-display").html(new ArticleDisplayView({ model }).render().$el)
+	},
+	addNewArticle(opts){
+		this.collection.create(opts)
 	}
 })
