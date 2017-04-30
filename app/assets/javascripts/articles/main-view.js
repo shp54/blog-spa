@@ -11,6 +11,7 @@ let ArticlesView = Backbone.View.extend({
 			this.collection.fetch().done(() => { this.render() })
 		}
 		this.listenTo(Backbone, "showArticleForm", this.createArticleForm)
+		this.listenTo(Backbone, "showArticle", this.showArticle)
 	},
 	render(){
 		this.collection.each((model) => {	
@@ -23,7 +24,11 @@ let ArticlesView = Backbone.View.extend({
 		Backbone.trigger("showArticleForm")
 	},
 	createArticleForm(model){
-		console.log("Showing", model)
+		this.$("#article-display").html("")
 		this.$("#article-form").html(new ArticlesFormView({ model }).render().$el)
+	},
+	showArticle(model){
+		this.$("#article-form").html("")
+		this.$("#article-display").html(new ArticleDisplayView({ model }).render().$el)
 	}
 })

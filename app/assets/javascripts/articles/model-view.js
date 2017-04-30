@@ -4,13 +4,14 @@ let ArticleModelView = Backbone.View.extend({
 	template: Handlebars.compile(`		
 		<td>{{title}}</td>
 		<td>{{text}}</td>
-		<td><a href="/articles/{{id}}">Show</a></td>
+		<td><a href="/articles/{{id}}" id="show-article">Show</a></td>
 		<td><a href="/articles/{{id}}/edit" id="edit-article">Edit</a></td>
 		<td><a href="" id="delete-article">Delete</a></td>
 	`.trim()),
 	events: {
 		"click #delete-article": "deleteArticle",
-		"click #edit-article": "editArticle"
+		"click #edit-article": "editArticle",
+		"click #show-article": "showArticle"
 	},
 	initialize(opts){
 		this.listenTo(this.model, "change", this.render);
@@ -26,7 +27,10 @@ let ArticleModelView = Backbone.View.extend({
 	},
 	editArticle(e){
 		e.preventDefault()
-		console.log("Show form for", this.model)
 		Backbone.trigger("showArticleForm", this.model)
+	},
+	showArticle(e){
+		e.preventDefault()
+		Backbone.trigger("showArticle", this.model)
 	}
 })
