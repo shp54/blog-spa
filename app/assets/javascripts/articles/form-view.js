@@ -42,6 +42,6 @@ let ArticlesFormView = Backbone.View.extend({
 			title: this.$("#article_title").val(),
 			text: this.$("#article_text").val()
 		})
-		this.model.save()
+		this.model.save().done(() => Backbone.trigger("addItem"))
 	}
 })
