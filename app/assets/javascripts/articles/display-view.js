@@ -13,3 +13,9 @@ let ArticleDisplayView = Backbone.View.extend({
 		return this
 	}
 })
+
+/* <h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %> */
