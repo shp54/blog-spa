@@ -36,7 +36,11 @@ let ArticlesView = Backbone.View.extend({
 	el: "#articles",
 	initialize(opts){
 		this.listenTo(this.collection, "change", this.render)
-		this.collection.fetch().done(() => { this.render() })
+		if(this.collection.length > 0){
+			this.render()
+		} else {
+			this.collection.fetch().done(() => { this.render() })
+		}
 	},
 	render(){
 		this.collection.each((model) => {	

@@ -8,3 +8,7 @@
 </table>
 
 <%= link_to 'New article', new_article_path %>
+
+<script>
+window.articles = <%=raw Article.all().to_json %>
+</script>

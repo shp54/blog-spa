@@ -18,7 +18,6 @@
 //= require articles
 
 $(() => { //Kickstart the backbone application	
-	//Attach view to DOM
-	let articles = new ArticlesCollection() 
-	let articlesTable = new ArticlesView({ collection: articles })
+	let articles = (window.articles) ? new ArticlesCollection(window.articles) : new ArticlesCollection() //Bootstrap it from server data	
+	let articlesTable = new ArticlesView({ collection: articles }) 	//Attach view to DOM
 })
