@@ -1,3 +1,8 @@
+//= require articles/data
+//= require articles/form-view
+//= require articles/display-view
+//= require articles/model-view
+
 let ArticlesView = Backbone.View.extend({
 	el: "#articles",
 	events: {

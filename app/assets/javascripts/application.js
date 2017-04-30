@@ -15,10 +15,6 @@
 //= require underscore/underscore
 //= require backbone/backbone
 //= require handlebars/dist/handlebars
-//= require articles/data
-//= require articles/form-view
-//= require articles/display-view
-//= require articles/model-view
 //= require articles/main-view
 
 $(() => { //Kickstart the backbone application	
