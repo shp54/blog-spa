@@ -15,7 +15,9 @@
 //= require underscore/underscore
 //= require backbone/backbone
 //= require handlebars/dist/handlebars
-//= require articles
+//= require articles/data
+//= require articles/model-view
+//= require articles/collection-view
 
 $(() => { //Kickstart the backbone application	
 	let articles = (window.articles) ? new ArticlesCollection(window.articles) : new ArticlesCollection() //Bootstrap it from server data	
