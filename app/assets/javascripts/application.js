@@ -16,6 +16,7 @@
 //= require backbone/backbone
 //= require handlebars/dist/handlebars
 //= require articles/data
+//= require articles/form-view
 //= require articles/model-view
 //= require articles/collection-view
 

@@ -5,11 +5,12 @@ let ArticleModelView = Backbone.View.extend({
 		<td>{{title}}</td>
 		<td>{{text}}</td>
 		<td><a href="/articles/{{id}}">Show</a></td>
-		<td><a href="/articles/{{id}}/edit">Edit</a></td>
+		<td><a href="/articles/{{id}}/edit" id="edit-article">Edit</a></td>
 		<td><a href="" id="delete-article">Delete</a></td>
 	`.trim()),
 	events: {
-		"click #delete-article": "deleteArticle"
+		"click #delete-article": "deleteArticle",
+		"click #edit-article": "editArticle"
 	},
 	initialize(opts){
 		this.listenTo(this.model, "change", this.render);
@@ -22,5 +23,10 @@ let ArticleModelView = Backbone.View.extend({
 	deleteArticle(e){
 		e.preventDefault()
 		this.model.destroy()
+	},
+	editArticle(e){
+		e.preventDefault()
+		console.log("Show form for", this.model)
+		Backbone.trigger("showArticleForm", this.model)
 	}
 })

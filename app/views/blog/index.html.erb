@@ -1,13 +1,15 @@
 <h1>Listing articles</h1>
 
-<table id='articles'>
+<div id="articles">
+<table>
 	<tr>
 		<th>Title</th>
 		<th>Text</th>
 	</tr>	
 </table>
-
-<%= link_to 'New article', new_article_path %>
+<%= link_to 'New article', new_article_path, id: "new-article" %>
+<div id="article-form"></div>
+</div>
 
 <script>
 window.articles = <%=raw Article.all().to_json %>
